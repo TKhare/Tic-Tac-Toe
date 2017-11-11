@@ -14,8 +14,8 @@ else:
     print('Successful Initialization!')
 
 #Setting up window and caption
-DISPLAYSURF_x = 900
-DISPLAYSURF_y = 900
+DISPLAYSURF_x = 600
+DISPLAYSURF_y = 600
 DISPLAYSURF = pygame.display.set_mode((DISPLAYSURF_x,DISPLAYSURF_y))
 pygame.display.set_caption('Tic Tac Toe')
 positions = [None, None, None, None, None, None, None, None, None]
@@ -28,9 +28,9 @@ BLACK = (0,0,0)
 def winning(number):
         #displays 'stamina'
         Font1 = pygame.font.SysFont('monaco', 24)
-        winSurface = Font1.render('Player {0}% Wins'.format(number), True, BLACK)
+        winSurface = Font1.render('Player {0} Wins'.format(number), True, BLACK)
         winRect = winSurface.get_rect()
-        winRect.midtop = (450, 10)
+        winRect.midtop = (300, 10)
         DISPLAYSURF.blit(winSurface,winRect)
 def check_winning():
 	if positions[0]==positions[1]==positions[2]:
@@ -82,67 +82,74 @@ while True:
         if event.type == pygame.MOUSEBUTTONDOWN:
             (x, y)= pygame.mouse.get_pos()
             if playerflag == True:
-                if jk == 1:
-                    if x < 300 and y < 300 and positions[0] == None:
+            	if jk == 1:
+#                if lastposition == False:
+                    if x < 200 and y < 200 and positions[0] == None:
                         positions[0] = 1
                         playerflag = False
-                    if x < 600 and y < 300 and x > 300 and positions[1] == None:
+                    if x < 400 and y < 200 and x > 200 and positions[1] == None:
                         positions[1] = 1
                         playerflag = False
-                    if x < 900 and y < 300 and x > 600 and positions[2] == None:
+                    if x < 600 and y < 200 and x > 400 and positions[2] == None:
                         positions[2] = 1
                         playerflag = False
-                    if x < 300 and y < 600 and y > 300 and positions[3] == None:
+                    if x < 200 and y < 400 and y > 200 and positions[3] == None:
                             positions[3] = 1
                             playerflag = False
-                    if x < 600 and y < 600 and x > 300 and y > 300 and positions[4] == None:
+                    if x < 400 and y < 400 and x > 200 and y > 200 and positions[4] == None:
                         positions[4] = 1
                         playerflag = False
-                    if x > 600 and y < 600 and y > 300 and positions[5] == None:
+                    if x > 400 and y < 400 and y > 200 and positions[5] == None:
                         positions[5] = 1
                         playerflag = False
-                    if x < 300 and y > 600 and positions[6] == None:
+                    if x < 200 and y > 400 and positions[6] == None:
                         positions[6] = 1
                         playerflag = False
-                    if x < 600 and y > 600 and x > 300 and positions[7] == None:
+                    if x < 400 and y > 400 and x > 200 and positions[7] == None:
                         positions[7] = 1
                         playerflag = False
-                    if x > 600 and y > 600 and positions[8] == None:
+                    if x > 400 and y > 400 and positions[8] == None:
                         positions[8] = 1 
                         playerflag = False
                     lastpostion = True
 
             else:
+                #if lastposition == True:
                 if jk == 1:
-                    if x < 300 and y < 300 and positions[0] == None:
+                    if x < 200 and y < 200 and positions[0] == None:
                         positions[0] = 2
                         playerflag = True   
-                    if x < 600 and y < 300 and x > 300 and positions[1] == None:
+                    if x < 400 and y < 200 and x > 200 and positions[1] == None:
                         positions[1] = 2
                         playerflag = True
-                    if x < 900 and y < 300 and x > 600 and positions[2] == None:
+                    if x < 600 and y < 200 and x > 400 and positions[2] == None:
                         positions[2] = 2
                         playerflag = True
-                    if x < 300 and y < 600 and y > 300 and positions[3] == None:
+                    if x < 200 and y < 400 and y > 200 and positions[3] == None:
                         positions[3] = 2
                         playerflag = True
-                    if x < 600 and y < 600 and x > 300 and y > 300 and positions[4] == None:
+                    if x < 400 and y < 400 and x > 200 and y > 200 and positions[4] == None:
                         positions[4] = 2
                         playerflag = True
-                    if x > 600 and y < 600 and y > 300 and positions[5] == None:
+                    if x > 400 and y < 400 and y > 200 and positions[5] == None:
                         positions[5] = 2
                         playerflag = True
-                    if x < 300 and y > 600 and positions[6] == None:
+                    if x < 200 and y > 400 and positions[6] == None:
                         positions[6] = 2
                         playerflag = True
-                    if x < 600 and y > 600 and x > 300 and positions[7] == None:
+                    if x < 400 and y > 400 and x > 200 and positions[7] == None:
                         positions[7] = 2
                         playerflag = True
-                    if x > 600 and y > 600 and positions[8] == None:
+                    if x > 400 and y > 400 and positions[8] == None:
                         positions[8] = 2 
                         playerflag = True
                     lastposition = False
             print positions    
+    #for place in positions:
+    	#if place == 1:
+    		#draw image 1
+    	#if place == 2:
+    		#draw image 2
     check_winning()
 
     pygame.display.flip()
