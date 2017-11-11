@@ -28,10 +28,10 @@ BLACK = (0,0,0)
 def winning(number):
         #displays 'stamina'
         Font1 = pygame.font.SysFont('monaco', 24)
-        winSurface = Font1.render('Stamina: {0}%'.format(number), True, BLACK)
+        winSurface = Font1.render('Player {0}% Wins'.format(number), True, BLACK)
         winRect = winSurface.get_rect()
         winRect.midtop = (450, 10)
-        DISPLAYSURF.blit(stamSurface,stamRect)
+        DISPLAYSURF.blit(winSurface,winRect)
 def check_winning():
 	if positions[0]==positions[1]==positions[2]:
 		if positions[0]==1:
@@ -74,6 +74,7 @@ def check_winning():
 		if positions[2]==2:
 			winning(player_2)
 #Creating background board
+jk = 1
 while True:
     DISPLAYSURF.fill([0,0,0])
     DISPLAYSURF.blit(empty_board, [0, 0])
@@ -81,7 +82,7 @@ while True:
         if event.type == pygame.MOUSEBUTTONDOWN:
             (x, y)= pygame.mouse.get_pos()
             if playerflag == True:
-                if lastposition == False:
+                if jk == 1:
                     if x < 300 and y < 300 and positions[0] == None:
                         positions[0] = 1
                         playerflag = False
@@ -112,7 +113,7 @@ while True:
                     lastpostion = True
 
             else:
-                if lastposition == True:
+                if jk == 1:
                     if x < 300 and y < 300 and positions[0] == None:
                         positions[0] = 2
                         playerflag = True   
@@ -141,7 +142,8 @@ while True:
                         positions[8] = 2 
                         playerflag = True
                     lastposition = False
-            print positions()    
+            print positions    
+    check_winning()
 
     pygame.display.flip()
 
